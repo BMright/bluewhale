@@ -23,5 +23,7 @@
 </head>
 <body>
 	你好,${username },你刚才输入的密码是${password }
+	博客内容是：${content }<br><br>${article.content }<br><br>
+	html内容是：${article.htmlcontent }<br>
 </body>
 </html>

@@ -3,6 +3,9 @@ package com.bluewhale.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,36 +17,47 @@ import com.bluewhale.service.LoginService;
 
 @Controller
 @RequestMapping(value = "/")
-public class LoginController {
+public class LoginController extends BaseController{
 	
 	@Autowired
 	private LoginService loginService;
 	
-	@RequestMapping(value = "toLogin")
+	@RequestMapping(value = "/toLogin")
 	public String toLogin() {
+		HttpSession session = request.getSession();
+		String isLogin = (String) session.getAttribute("loginStatus");
+		if (isLogin != null && isLogin.equals("true")) {
+			forward("/testHome");
+		}
 		System.out.println("我执行了");
 		return "login";
 	}
 	
-	@RequestMapping(value = "/toHome")
+	@RequestMapping(value = "/getIsLogin")
 	@ResponseBody
-	public Map<String, Object> toHome(User user,Model model) {
+	public Map<String, Object> toHome(HttpServletRequest request,User user,Model model) {
 		Map<String, Object> map = new HashMap<>();
 		String username = user.getUsername();
 		String password = user.getPassword();
 		User user2 = loginService.selectUserByUsername(username);
 		System.out.println(user2);
-
+		HttpSession session = request.getSession();
+		
 		if (user2 == null){
 			map.put("status", "ERROR");
 			map.put("info", "用户名不存在！");
+			session.setAttribute("loginStatus", "false");
 			return map;
 		}else if (!user2.getPassword().equals(password)){
 			map.put("status", "ERROR");
 			map.put("info", "用户名或密码错误！");
+			session.setAttribute("loginStatus", "false");
 			return map;
 		}
+		
+		session.setAttribute("loginStatus", "true");
 		map.put("status", "SUCCESS");
+		map.put("root", user2.getRoot());
 		map.put("username", username);
 		map.put("password", password);
 		return map;
@@ -51,7 +65,13 @@ public class LoginController {
 	
 	@RequestMapping(value = "/home")
 	public String home() {
-		return "home";
+		return "testHome";
+	}
+	
+	@RequestMapping(value = "/testMap")
+	public String testMap(){
+		
+		return "test";
 	}
 	
 	@RequestMapping(value = "/toTest")

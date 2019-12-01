@@ -14,78 +14,9 @@
     <title>欢迎回来</title>
     <script src="<%=basePath %>js/jquery/jquery.min.js"></script>
     <script src="<%=basePath %>js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=basePath %>js/login/login.js"></script>
     <link rel="stylesheet" type="text/css" href="<%=basePath %>css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<%=basePath %>css/login/login.css">
-	<style>
-		body{
-    		background: url("<%=basePath %>img/login/zhibei_dangao.jpg");
-    		background-repeat: no-repeat;
-			background-size: 100% 100%;
-			background-attachment: fixed;
-		}
-		@keyframes myfirst
-		{
-		    0%   {background:url("<%=basePath %>img/login/zhibei_dangao.jpg");
-		    		background-repeat: no-repeat;
-					background-size: 100% 100%;
-					background-attachment: fixed;
-		    	}
-		    34%  {background:url("<%=basePath %>img/login/zhibei_dangao-001.jpg");
-		    		background-repeat: no-repeat;
-					background-size: 100% 100%;
-					background-attachment: fixed;
-		    	}
-		    67%  {background:url("<%=basePath %>img/login/zhibei_dangao-003.jpg");
-		    		background-repeat: no-repeat;
-					background-size: 100% 100%;
-					background-attachment: fixed;
-		    	}
-		    100% {background:url("<%=basePath %>img/login/zhibei_dangao-005.jpg");
-		    		background-repeat: no-repeat;
-					background-size: 100% 100%;
-					background-attachment: fixed;
-		    	}
-		}
-	</style>
-	<script type="text/javascript">
-			$(document).keydown(function(event){
-				if(event.keyCode==13){
-					$(".submit_login").click();
-				}
-			});
-		
-			$(document).ready(function(){
-				$(".submit_login").click(function(){
-					if($("#username").val() == ""){
-						alert("用户名不能为空");
-						return;
-					}else if($("#password").val() == ""){
-						alert("密码不能为空");
-						return;
-					}
-					$.ajax({
-                 	   	type: "POST",
-                  	  	url: "<%=path%>/toHome",
-                  	  	data: {
-                  	  		"username":$("#username").val(),
-                  	  		"password":$("#password").val()
-                  	  	},
-                  	  	dataType: "json",
-                    	success: function (result) {
-                     		if(result.status == "SUCCESS"){
-                     			window.location.href='<%=path%>/home';
-                     		}else{
-                     			alert("密码错误");
-                     		}
-                    	},
-                    	error: function(data) {
-                    		alert("账户不存在");
-                     	}
-                	});
-				});
-			});
-		</script>
-	
 </head>
 <body>
     <div class="container">
