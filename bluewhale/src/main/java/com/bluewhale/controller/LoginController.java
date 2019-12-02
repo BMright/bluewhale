@@ -27,8 +27,9 @@ public class LoginController extends BaseController{
 		HttpSession session = request.getSession();
 		String isLogin = (String) session.getAttribute("loginStatus");
 		if (isLogin != null && isLogin.equals("true")) {
-			forward("/user");
+			forward("/testHome");
 		}
+		System.out.println("我执行了");
 		return "login";
 	}
 	
@@ -55,7 +56,6 @@ public class LoginController extends BaseController{
 		}
 		
 		session.setAttribute("loginStatus", "true");
-		session.setAttribute("user", user2);
 		map.put("status", "SUCCESS");
 		map.put("root", user2.getRoot());
 		map.put("username", username);

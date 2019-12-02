@@ -1,6 +1,6 @@
 <html>
 <body>
-<jsp:forward page="/visitor" />
+<jsp:forward page="/toLogin" />
 <h2>Hello World!</h2>
 </body>
 </html>
