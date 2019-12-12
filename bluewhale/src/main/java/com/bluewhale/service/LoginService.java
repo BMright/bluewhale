@@ -12,6 +12,7 @@ public class LoginService {
 	@Autowired
 	private LoginDao loginDao;
 
+	// 通过用户名查找用户
 	public User selectUserByUsername(String username) {
 		return loginDao.selectUserByUsername(username);
 	}

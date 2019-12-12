@@ -36,6 +36,7 @@
                         <!-- <label class="checkbox">
                             <input type="checkbox" name="remember" value="1"/>记住我
                         </label> -->
+                        
                     </div>
                     <div class="form-group col-md-offset-9">
                         <button type="submit" class="btn btn-success pull-right submit_login" name="submit">登录</button>

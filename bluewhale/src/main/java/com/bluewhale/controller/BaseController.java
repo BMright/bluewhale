@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.bluewhale.pojo.PageData;
+
 public class BaseController {
 
 	protected HttpServletRequest request;
@@ -47,6 +49,13 @@ public class BaseController {
 	 */
 	protected HttpSession getSession() {
 		return session;
+	}
+	
+	/**
+	 * 得到PageData
+	 */
+	protected PageData getPageData() {
+		return new PageData(this.getRequest());
 	}
 	
 	/**

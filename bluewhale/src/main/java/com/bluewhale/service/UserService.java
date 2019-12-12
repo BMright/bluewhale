@@ -21,4 +21,9 @@ public class UserService {
 	public void updateUserInfo(User user) {
 		userDao.updateUserInfo(user);
 	}
+	
+	// 通过email查找用户
+	public User getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
+	}
 }

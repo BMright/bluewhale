@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bluewhale.pojo.PageData;
 import com.bluewhale.pojo.User;
 import com.bluewhale.service.LoginService;
+import com.bluewhale.service.UtilService;
 
 @Controller
 @RequestMapping(value = "/")
@@ -22,16 +24,19 @@ public class LoginController extends BaseController{
 	@Autowired
 	private LoginService loginService;
 	
+	// 跳转到登录页面
 	@RequestMapping(value = "/toLogin")
 	public String toLogin() {
 		HttpSession session = request.getSession();
 		String isLogin = (String) session.getAttribute("loginStatus");
-		if (isLogin != null && isLogin.equals("true")) {
+		User user = (User) session.getAttribute("user");
+		if (isLogin != null && user != null && isLogin.equals("true")) {
 			forward("/user");
 		}
 		return "login";
 	}
 	
+	// 判断是否登录成功
 	@RequestMapping(value = "/getIsLogin")
 	@ResponseBody
 	public Map<String, Object> toHome(HttpServletRequest request,User user,Model model) {
@@ -63,14 +68,16 @@ public class LoginController extends BaseController{
 		return map;
 	}
 	
-	@RequestMapping(value = "/home")
-	public String home() {
-		return "testHome";
-	}
+	@Autowired
+	private UtilService utilService;
 	
 	@RequestMapping(value = "/testMap")
 	public String testMap(){
-		
+		PageData pageData = this.getPageData();
+		pageData.put("aid", 1);
+		pageData.put("uid", 2);
+		boolean dianZan = utilService.changeDianZan(pageData);
+		System.out.println(dianZan);
 		return "test";
 	}
 	

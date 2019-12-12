@@ -27,14 +27,13 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="/bluewhale/admin"><img src="/bluewhale/img/baseLayout/whale.png" style="width: 43px;height: 43px;margin-right: 20px;">欢迎您！</a>
+      <a class="navbar-brand" href="#"><img src="/bluewhale/img/baseLayout/whale.png" style="width: 43px;height: 43px;margin-right: 20px;">${user.username },欢迎您！</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          
           <li class="nav-item" id="search">
             <input type="text" id="search_input" placeholder="搜索"/>
             <img src="/bluewhale/img/baseLayout/search.png" id="search_btn"/>
@@ -43,7 +42,7 @@
             <a class="nav-link" href="#">首页</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">写博文</a>
+            <a class="nav-link" href="/bluewhale/toEditArticle">写博文</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/bluewhale/userBlogs">我的博文</a>
@@ -55,7 +54,7 @@
             <a class="nav-link" href="#">留言</a>
            </li>
           <li class="nav-item">
-            <a class="nav-link" href="up_User_info.html">个人信息</a>
+            <a class="nav-link" href="/bluewhale/selfInfo">个人信息</a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="#">所有博主</a>

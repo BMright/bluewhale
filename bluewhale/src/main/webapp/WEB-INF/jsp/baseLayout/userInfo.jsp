@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>个人信息</title>
 </head>
 <body>
-
+	等待填充
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.bluewhale.pojo;
 public class Article {
 	private int id;
 	private String title;
+	private String summary;
 	private String content;
 	private String htmlcontent;
 	private String type;
@@ -21,6 +22,12 @@ public class Article {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 	public String getType() {
 		return type;
@@ -58,11 +65,10 @@ public class Article {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", htmlcontent=" + htmlcontent
-				+ ", type=" + type + ", ownerid=" + ownerid + ", submitdata=" + submitdata + ", comment=" + comment
-				+ "]";
+		return "Article [id=" + id + ", title=" + title + ", summary=" + summary + ", content=" + content
+				+ ", htmlcontent=" + htmlcontent + ", type=" + type + ", ownerid=" + ownerid + ", submitdata="
+				+ submitdata + ", comment=" + comment + "]";
 	}
 }

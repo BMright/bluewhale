@@ -12,4 +12,7 @@ public interface UserDao {
 	
 	// 通过id查找用户
 	public User getUserById(Integer id);
+	
+	// 通过email查找用户
+	public User getUserByEmail(String email);
 }

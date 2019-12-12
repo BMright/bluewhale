@@ -12,28 +12,40 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bluewhale.pojo.Article;
+import com.bluewhale.pojo.PageData;
 import com.bluewhale.pojo.QueryVo;
+import com.bluewhale.pojo.User;
 import com.bluewhale.service.ArticleService;
+import com.bluewhale.service.UtilService;
 
 @Controller
 public class ArticleController extends BaseController{
 	
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private UtilService utilService;
 	
-	// 跳转到编辑文章页面
-	@RequestMapping(value = "/toEditArticle")
-	public String toEditArticle() {
+	// 跳转到修改文章页面
+	@RequestMapping(value = "/toEditTest")
+	public String toEditTest() {
 		Article article = articleService.getArticleById(4);
 		model.addAttribute("article", article);
 		return "editorTest";
 	}
+	// 跳转到编辑文章页面
+	@RequestMapping(value = "/toEditArticle")
+	public String toEditArticle() {
+		return "article/editArticle";
+	}
 	
 	// 添加博文
 	@RequestMapping(value = "addArticle")
-	public String addArticle(Article article,String content) {
-		
+	public String addArticle(Article article) {
 		System.out.println("article:" + article);
+		session.setAttribute("user", utilService.getUserById(1));
+		User user = (User) session.getAttribute("user");
+		article.setOwnerid(user.getId());
 		articleService.addArticle(article);
 		System.out.println("id:" + article.getId());
 		
@@ -67,7 +79,7 @@ public class ArticleController extends BaseController{
 		        file.transferTo(newfile);
 		        map.put("success", "1");
 				map.put("message", "成功");
-				map.put("url",	"http://localhost:8080/uploadImg/" + fileOrigName);
+				map.put("url",	"http://www.blingbling.wiki/uploadImg/" + fileOrigName);
 		    }
 		} catch (Exception e) {
 			map.put("success", "0");
@@ -102,6 +114,23 @@ public class ArticleController extends BaseController{
 		Map<String, Object> map = new HashMap<>();
 		QueryVo<Article> vo = articleService.getArticle(qv);
 		map.put("pageData", vo);
+		return map;
+	}
+	
+	// 改变文章点赞状态
+	@RequestMapping(value = "changeDianZan")
+	@ResponseBody
+	public Map<String, Object> changeDianZan(){
+		Map<String, Object> map = new HashMap<>();
+		PageData pd = this.getPageData();
+		User user = (User) session.getAttribute("user");
+		pd.put("uid", user.getId());
+		boolean dianZan = utilService.changeDianZan(pd);
+		if (dianZan) {
+			map.put("status", "SUCCESS");
+		}else {
+			map.put("status", "ERROR");
+		}
 		return map;
 	}
 }

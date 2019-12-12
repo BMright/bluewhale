@@ -30,7 +30,6 @@ top:-90px;
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <button type="button" class="return" onClick="javascript :history.go(-1);return false;">返回</button>
-      
     </div>
   </nav>
 
@@ -41,8 +40,8 @@ top:-90px;
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>Man must explore, and this is exploration at its greatest</h1>
-            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+            <h1>${article.title }</h1>
+            <h2 class="subheading">${article.summary }</h2>
             <span class="meta">Posted by
               <a href="#">Start Bootstrap</a>
               on August 24, 2019</span>
@@ -57,7 +56,8 @@ top:-90px;
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+          ${article.htmlcontent }
+          <!-- <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
 
           <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
 
@@ -92,7 +92,7 @@ top:-90px;
 
           <p>Placeholder text by
             <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p> -->
         </div>
       </div>
     </div>

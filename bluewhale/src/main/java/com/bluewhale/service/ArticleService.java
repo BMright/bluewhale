@@ -1,5 +1,7 @@
 package com.bluewhale.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,13 @@ public class ArticleService {
 	
 	// 添加文章
 	public void addArticle(Article article) {
-		article.setTitle("test1");
-		article.setOwnerid(2);
+		SimpleDateFormat simpleDateFormat;
+		simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
+		Date date = new Date();
+		String str = simpleDateFormat.format(date);
+		article.setSubmitdata(str);
+		article.setType("测试");
+		article.setComment("");
 		articleDao.addArticle(article);
 	}
 	

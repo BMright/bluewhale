@@ -18,8 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			id = #{id}
 	</update>
 	
+	<!-- 通过用户id获取用户 -->
 	<select id="getUserById" parameterType="Integer" resultType="user">
 		select * from blog_user where id = #{value}
+	</select>
+	
+	<!-- 通过用户email获取用户 -->
+	<select id="getUserByEmail" parameterType="String" resultType="user">
+		select * from blog_user where email = #{value}
 	</select>
 
 </mapper>

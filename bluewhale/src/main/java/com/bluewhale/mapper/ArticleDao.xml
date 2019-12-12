@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 添加文章 -->
 	<insert id="addArticle" parameterType="article" keyProperty="id" useGeneratedKeys="true"> 
-		insert into blog_article(title,type,content,htmlcontent,ownerid,submitdata,comment) 
-			values(#{title},#{type},#{content},#{htmlcontent},#{ownerid},#{submitdata},#{comment})
+		insert into blog_article(title,summary,type,content,htmlcontent,ownerid,submitdata,comment) 
+			values(#{title},#{summary},#{type},#{content},#{htmlcontent},#{ownerid},#{submitdata},#{comment})
 	</insert>
 	
 	<!-- 通过id查询文章 -->
@@ -35,4 +35,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from blog_article limit #{beginIndex},#{pageSize}
 	</select>
 
+	<!-- 通过id查询点赞数 -->
+	<select id="getZanCount" parameterType="Integer" resultType="Integer">
+		select count(*) from blog_zan where aid = #{value}
+	</select>
+	
+	<!-- 判断文章是否已被点赞 -->
+	<select id="isDianZan" parameterType="pd" resultType="pd">
+		select * from blog_zan where aid=#{aid} and uid=#{uid}
+	</select>
+	
+	<!-- 删除点赞 -->
+	<delete id="deleteDianZan" parameterType="pd">
+		delete from blog_zan where aid=#{aid} and uid=#{uid}
+	</delete>
+	
+	<!-- 添加点赞 -->
+	<insert id="addDianZan" parameterType="pd">
+		insert into blog_zan (aid,uid)
+		values(#{aid},#{uid})
+	</insert>
+	
 </mapper>

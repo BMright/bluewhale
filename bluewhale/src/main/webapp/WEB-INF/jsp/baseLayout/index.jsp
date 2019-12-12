@@ -1,10 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    import="java.util.*" pageEncoding="utf-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
+%>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -69,33 +73,23 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
+        <c:forEach items="${articleList }" var="article">
         <div class="post-preview" id="blog_context" data-aos="fade-right">
           	<!-- 链接 -->
-          <a href="/bluewhale/blogContent"> 
+          <a href="/bluewhale/blogContent?id=${article.id }"> 
             <h2 class="post-title">
-              博客题目
+            	${article.title }
             </h2>
             <h3 class="post-subtitle">
-              博客简介
+              	${article.summary }
             </h3>
           </a>
           <p class="post-meta">作者</p>
         </div>
+        </c:forEach>
         
-        <div class="post-preview" id="blog_context" data-aos="fade-left">
-          	<!-- 链接 -->
-          <a href="/bluewhale/blogContent">
-            <h2 class="post-title">
-              I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-            </h2>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 18, 2019</p>
-        </div>
-        
-        <div class="post-preview" id="blog_context" data-aos="fade-right">
-          	<!-- 链接 -->
+        <!-- <div class="post-preview" id="blog_context" data-aos="fade-right">
+          	链接
           <a href="/bluewhale/blogContent">
             <h2 class="post-title">
               Science has not yet mastered prophecy
@@ -105,29 +99,29 @@
             </h3>
           </a>
           <p class="post-meta">Posted by
-            	<!-- 链接 -->
+            	链接
             <a href="#">Start Bootstrap</a>
             on August 24, 2019</p>
         </div>
         
         <div class="post-preview" id="blog_context" data-aos="fade-left">
-          	<!-- 链接 -->
+          	链接
           <a href="/bluewhale/blogContent">
-            <!-- 	题目 -->
+            	题目
             <h2 class="post-title">
               Failure is not an option
             </h2>
-            	<!-- 简介 -->
+            	简介
             <h3 class="post-subtitle">
               Many say exploration is part of our destiny, but it’s actually our duty to future generations.
             </h3>
           </a>
-          	<!-- 作者 -->
+          	作者
           <p class="post-meta">Posted by
-            	<!-- 链接 -->
+            	链接
             <a href="#">Start Bootstrap</a>
             on July 8, 2019</p>
-        </div>
+        </div> -->
        
         <!-- Pager -->
         <div class="clearfix">
