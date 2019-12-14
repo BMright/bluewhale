@@ -5,6 +5,7 @@ public class User {
 	private Integer id;
 	private String	username;
 	private String	password;
+	private String  email;
 	private Integer root;
 	
 	public Integer getId() {
@@ -25,6 +26,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Integer getRoot() {
 		return root;
 	}
@@ -33,7 +40,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", root="
+				+ root + "]";
 	}
-	
 }

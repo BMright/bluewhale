@@ -18,6 +18,7 @@ public class HomeController extends BaseController{
 	// 跳转到游客页面
 	@RequestMapping(value = "/visitor")
 	public String toTest() {
+		System.out.println("我进来了");
 		QueryVo<Article> qv = new QueryVo<>();
 		qv.setCurrentPage(1);
 		qv.setPageSize(3);

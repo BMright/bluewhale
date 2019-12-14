@@ -5,12 +5,23 @@ $(document).keydown(function(event) {
 });
 
 $(document).ready(function() {
+	$(".submit_regist").click(function() {
+		window.location.href = '/bluewhale/toRegist';
+	});
+	
+	$(".submit_fbpword").click(function() {
+		window.location.href = '/bluewhale/findBackPassword';
+	});
+	
 	$(".submit_login").click(function() {
-		if ($("#username").val() == "") {
+		if ($("#username").val().trim() == "") {
 			alert("用户名不能为空");
 			return;
-		} else if ($("#password").val() == "") {
+		} else if ($("#password").val().trim() == "") {
 			alert("密码不能为空");
+			return;
+		} else if ($("#verifyCode").val().trim() == "") {
+			alert("验证码不能为空");
 			return;
 		}
 		$.ajax({
@@ -18,7 +29,8 @@ $(document).ready(function() {
 			url : "/bluewhale/getIsLogin",
 			data : {
 				"username" : $("#username").val(),
-				"password" : $("#password").val()
+				"password" : $("#password").val(),
+				"verifyCode" : $("#verifyCode").val()
 			},
 			dataType : "json",
 			success : function(result) {
@@ -29,7 +41,7 @@ $(document).ready(function() {
 						window.location.href = '/bluewhale/user';
 					}
 				} else {
-					alert("密码错误");
+					alert(result.info);
 				}
 			},
 			error : function(data) {

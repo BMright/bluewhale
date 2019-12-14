@@ -41,7 +41,7 @@ public class MailUtil {
             message.setContent(msg,"text/html;charset=utf-8");
             //第四步：设置发送昵称
             String nick="";
-            nick = javax.mail.internet.MimeUtility.encodeText("Miss.ss");
+            nick = javax.mail.internet.MimeUtility.encodeText("蓝鲸博客");
             message.setFrom(new InternetAddress(nick+"'<1361585641@qq.com>'"));
             //第五步：设置接收人信息
             ts.sendMessage(message, InternetAddress.parse(to));

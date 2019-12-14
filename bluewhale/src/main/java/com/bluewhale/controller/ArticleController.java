@@ -31,7 +31,7 @@ public class ArticleController extends BaseController{
 	public String toEditTest() {
 		Article article = articleService.getArticleById(4);
 		model.addAttribute("article", article);
-		return "editorTest";
+		return "test/editorTest";
 	}
 	// 跳转到编辑文章页面
 	@RequestMapping(value = "/toEditArticle")
@@ -49,7 +49,7 @@ public class ArticleController extends BaseController{
 		articleService.addArticle(article);
 		System.out.println("id:" + article.getId());
 		
-		return "test";
+		return "test/test";
 	}
 	
 	// 上传图片
@@ -94,7 +94,7 @@ public class ArticleController extends BaseController{
 	public String getArticleById(Integer id) {
 		Article article = articleService.getArticleById(id);
 		model.addAttribute("article", article);
-		return "true";
+		return "test/true";
 	}
 	
 	// 通过id删除文章

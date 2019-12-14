@@ -33,13 +33,19 @@
                        	<input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
                     </div>
                     <div class="form-group">
+                    	<span class="fa glyphicon glyphicon-send"></span>
+                        <input style="width: 60%;" class="form-control required" type="text" placeholder="VerifyCode" id="verifyCode" name="verifyCode" autofocus="autofocus" maxlength="20"/>
+                    	<img style="float: right; margin-top: -34px;" src="RandomPictrue" height="34px" width="80px" onclick="this.src=this.src+'?random='+Math.random();"/>
+                    </div>
+                    <div class="form-group">
                         <!-- <label class="checkbox">
                             <input type="checkbox" name="remember" value="1"/>记住我
                         </label> -->
-                        
+                        <button type="button" class="btn btn-default pull-right submit_fbpword" name="forgetPassword">忘记密码？点我</button>
                     </div>
                     <div class="form-group col-md-offset-9">
-                        <button type="submit" class="btn btn-success pull-right submit_login" name="submit">登录</button>
+                    	<button type="button" class="btn btn-primary pull-left submit_regist" name="regist">去注册</button>
+                        <button type="submit" class="btn btn-primary pull-right submit_login" name="submit">登录</button>
                     </div>
                 </div>
             </div>

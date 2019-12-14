@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.bluewhale.mapper.UserDao">
 	<!-- 添加用户 -->
 	<insert id="addUser" parameterType="user" keyProperty="id" useGeneratedKeys="true" >
-		insert into blog_user(username,password,root)
-		values(#{username},#{password},#{root})
+		insert into blog_user(username,password,email,root)
+		values(#{username},#{password},#{email},#{root})
 	</insert>
 	
 	<!-- 更新用户信息 -->
