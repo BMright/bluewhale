@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bluewhale.pojo.QueryVo;
 import com.bluewhale.pojo.User;
 import com.bluewhale.service.UserService;
 import com.bluewhale.utils.MailUtil;
@@ -18,10 +19,40 @@ public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
+	// 获取用户总数
+	@RequestMapping(value = "/getUserTotal")
+	@ResponseBody
+	public Map<String, Object> getUserTotal(){
+		Map<String, Object> map = new HashMap<>();
+		Integer total = userService.getUserTotal();
+		map.put("total", total);
+		return map;
+	}
+	
+	// 获取用户分页列表
+	@RequestMapping(value = "/userPageData")
+	@ResponseBody
+	public Map<String, Object> userPageData(QueryVo<User> qv) {
+		Map<String, Object> map = new HashMap<>();
+		qv = userService.getUserList(qv);
+		map.put("length", qv.getQueryList().size());
+		map.put("qv", qv);
+		System.out.println("qv:" + qv);
+		map.put("status", "SUCCESS");
+		map.put("info", "异常");
+		return map;
+	}	
+	
+	// 跳转到用户个人信息页面
 	@RequestMapping(value = "/selfInfo")
 	public String selfInfo(){
-		
-		return "baseLayout/userInfo";
+		return "user/userInfo";
+	}
+	
+	// 跳转到所有用户页面
+	@RequestMapping(value = "/toAllUser")
+	public String toAllUser() {
+		return "user/all_ups";
 	}
 	
 	// 跳转到找回密码页面

@@ -11,6 +11,8 @@ public class Article {
 	private String submitdata;
 	private String comment;
 	
+	private String ownername;
+	
 	public int getId() {
 		return id;
 	}
@@ -64,6 +66,12 @@ public class Article {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public String getOwnername() {
+		return ownername;
+	}
+	public void setOwnername(String ownername) {
+		this.ownername = ownername;
 	}
 	@Override
 	public String toString() {

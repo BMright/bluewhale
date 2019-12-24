@@ -3,9 +3,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bluewhale.mapper.ArticleDao">
+	
+	<!-- 获取访问量最多的五个 -->
+	<select id="getFifthArticle" parameterType="pd" resultType="article">
+		SELECT * FROM blog_article
+		<where>
+			<if test="userid != -1">
+				ownerid = #{userid}
+			</if>
+		</where>
+		 ORDER BY fangwenliang DESC limit 0,5
+	</select>
+	
 	<!-- 查询文章总数 -->
-	<select id="getArticleTotal" resultType="Integer">
-		select count(*) from blog_article
+	<select id="getArticleTotal" parameterType="pd" resultType="Integer">
+		select count(*) from blog_article 
+		<where>
+			<if test="userid != -1">
+				ownerid = #{userid}
+			</if>
+		</where>
 	</select>
 	
 	<!-- 添加文章 -->
@@ -31,11 +48,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 查询文章 -->
-	<select id="getArticle" parameterType="queryVo" resultType="article">
-		select * from blog_article limit #{beginIndex},#{pageSize}
+	<select id="getArticle" parameterType="pd" resultType="article">
+		select * from blog_article 
+		<where>
+			<if test="userid != -1">
+				ownerid = #{userid}
+			</if>
+		</where> limit #{qv.beginIndex},#{qv.pageSize}
 	</select>
 
-	<!-- 通过id查询点赞数 -->
+	<!-- 通过文章id查询点赞数 -->
 	<select id="getZanCount" parameterType="Integer" resultType="Integer">
 		select count(*) from blog_zan where aid = #{value}
 	</select>
@@ -55,5 +77,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into blog_zan (aid,uid)
 		values(#{aid},#{uid})
 	</insert>
+	
+	<!-- 判断文章是否已被收藏 -->
+	<select id="isCollect" parameterType="pd" resultType="pd">
+		select * from blog_collect where aid=#{aid} and uid=#{uid}
+	</select>
+	
+	<!-- 删除收藏 -->
+	<delete id="deleteCollect" parameterType="pd">
+		delete from blog_collect where aid=#{aid} and uid=#{uid}
+	</delete>
+	
+	<!-- 添加收藏 -->
+	<insert id="addCollect" parameterType="pd">
+		insert into blog_collect (aid,uid)
+		values(#{aid},#{uid})
+	</insert>
+	
+	<!-- 通过用户id查询收藏文章数 -->
+	<select id="getCollectCount" parameterType="Integer" resultType="Integer">
+		select count(*) from blog_collect where uid = #{value}
+	</select>
+	
+	<!-- 查询已收藏文章列表 -->
+	<select id="getCollectArticle" parameterType="pd" resultType="pd">
+		select * from blog_article where id in (
+			select aid from blog_collect where uid = #{userid}
+		) limit #{qv.beginIndex},#{qv.pageSize}
+	</select>
 	
 </mapper>

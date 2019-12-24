@@ -28,4 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from blog_user where email = #{value}
 	</select>
 
+	<!-- 获取用户总数 -->
+	<select id="getUserTotal" resultType="Integer">
+		select count(*) from blog_user
+	</select>
+	
+	<!-- 获取用户分页列表 -->
+	<select id="getUserList" parameterType="queryVo" resultType="user">
+		select * from blog_user limit #{beginIndex},#{pageSize}
+	</select>
 </mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bluewhale.mapper.FileDao">
+	<!-- 获取文件列表 -->
+	<select id="getFileList" parameterType="queryVo" resultType="mfile">
+		select * from blog_file limit #{beginIndex},#{pageSize}
+	</select>
+	
+	<!-- 通过id获取文件信息 -->
+	<select id="getFileById" parameterType="Integer" resultType="mfile">
+		select * from blog_file
+		<where>
+			id = #{value}
+		</where>
+	</select>
+	
+	<!-- 添加文件信息 -->
+	<insert id="addFileInfo" keyProperty="id" parameterType="mfile"  useGeneratedKeys="true">
+		insert into blog_file(filename,filesuffix,filepath,filesize,filedate) values(
+			#{filename},#{filesuffix},#{filepath},#{filesize},#{filedate}
+		)
+	</insert>
+	
+	<!-- 获取文件总数 -->
+	<select id="getFileSum" resultType="Integer">
+		select count(*) from blog_file
+	</select>
+	
+</mapper>

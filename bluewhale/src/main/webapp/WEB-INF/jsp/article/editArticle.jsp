@@ -18,6 +18,8 @@
 	<script type="text/javascript" src="/bluewhale/js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/bluewhale/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=basePath %>resources/editormd/editormd.min.js"></script>
+  	<link href="/bluewhale/css/baseLayout/clean-blog.min.css" rel="stylesheet">
+  	<link href="/bluewhale/css/article/editArticle.css"  rel="stylesheet"/>
 <script type="text/javascript">
   $(function() {
       var testEditor = editormd("test-editormd", {
@@ -28,7 +30,6 @@
           path    : "<%=request.getContextPath()%>/resources/editormd/lib/",
           //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
           saveHTMLToTextarea : true,
-          
           imageUpload: true, //开启图片上传
           imageUploadURL: '/bluewhale/uploadImg', //图片上传后台地址
           onload: function() {
@@ -43,7 +44,48 @@
 </script>
 </head>
 <body>
-	<div class="container">
+	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/bluewhale/user"><img src="/bluewhale/img/baseLayout/whale.png" style="width: 43px;height: 43px;margin-right: 20px;">${user.username },欢迎您！</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" id="search">
+            <input type="text" id="search_input" placeholder="搜索"/>
+            <img src="/bluewhale/img/baseLayout/search.png" id="search_btn"/>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bluewhale/user">首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bluewhale/toEditArticle">写博文</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bluewhale/userBlogs">我的博文</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bluewhale/userBlogs">我的收藏</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">留言</a>
+           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bluewhale/selfInfo">个人信息</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="#">所有博主</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+	<div class="container" style="margin-top: 80px;">
 		<form action="/bluewhale/addArticle" method="post">
 			<div class="row">
 				<label>文章名：</label><input name="title"/>

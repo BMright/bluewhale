@@ -1,0 +1,45 @@
+#mainNav{
+	background:url("/bluewhale/img/baseLayout/home-bg.jpg");
+	margin-top:-80px;
+	margin-left:7%;
+}
+#mainNav .navbar-brand{
+	padding: 5px 20px;
+}
+#mainNav .navbar-nav > li.nav-item > a{
+	font-size: 16px;
+	padding: 5px 20px;
+}
+#search {
+  float: left;
+  display: inline;
+  width: 200px;
+  height: 28px;
+  margin: 5px 0;
+}
+#search_input {
+  width: 200px;
+  float: left;
+  display: inline;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 8px;
+  border: none;
+  font-size: 12px;
+  border-radius: 30px;
+  padding:0 10px;
+  line-height: 28px;
+}
+#search_btn {
+  width: 16px;
+  height: 16px;
+  float: right;
+  display: inline;
+  margin-right: 8px;
+  margin-top: -21px;
+  cursor: pointer;
+}
+
+.row a{
+	text-decoration: none;
+}

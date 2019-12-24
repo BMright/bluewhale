@@ -1,12 +1,14 @@
 package com.bluewhale.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bluewhale.mapper.UserDao;
+import com.bluewhale.pojo.QueryVo;
 import com.bluewhale.pojo.User;
 
 @Service
@@ -42,5 +44,20 @@ public class UserService {
 	// 通过email查找用户
 	public User getUserByEmail(String email) {
 		return userDao.getUserByEmail(email);
+	}
+	
+	// 获取用户总数
+	public Integer getUserTotal() {
+		return userDao.getUserTotal();
+	}
+
+	// 获取用户分页列表
+	public QueryVo<User> getUserList(QueryVo<User> qv) {
+		qv.setTotal(getUserTotal());
+		qv.setTotalPage();
+		qv.setBeginIndex();
+		List<User> userList = userDao.getUserList(qv);
+		qv.setQueryList(userList);
+		return qv;
 	}
 }

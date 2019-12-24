@@ -46,4 +46,10 @@ public class QueryVo<T> {
 	public void setQueryList(List<T> queryList) {
 		this.queryList = queryList;
 	}
+	@Override
+	public String toString() {
+		return "QueryVo [currentPage=" + currentPage + ", pageSize=" + pageSize + ", total=" + total + ", totalPage="
+				+ totalPage + ", beginIndex=" + beginIndex + ", queryList=" + queryList + "]";
+	}
+	
 }

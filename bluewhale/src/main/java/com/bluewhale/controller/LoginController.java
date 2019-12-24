@@ -24,6 +24,14 @@ public class LoginController extends BaseController{
 	@Autowired
 	private LoginService loginService;
 	
+	// 退出登录
+	@RequestMapping(value = "/exitLogin")
+	public String exitLogin() {
+		session.setAttribute("loginStatus", "false");
+		session.removeAttribute("user");
+		return "redirect:visitor";
+	}
+	
 	// 跳转到注册页面
 	@RequestMapping(value = "/toRegist")
 	public String toRegist() {
@@ -114,7 +122,7 @@ public class LoginController extends BaseController{
 	
 	@RequestMapping(value = "/toTest")
 	public String test() {
-		return "test/test";
+		return "article/editArticleBlog";
 	}
 	
 }

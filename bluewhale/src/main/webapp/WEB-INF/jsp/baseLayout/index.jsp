@@ -84,44 +84,9 @@
               	${article.summary }
             </h3>
           </a>
-          <p class="post-meta">作者</p>
+          <p class="post-meta">${article.ownername }</p>
         </div>
         </c:forEach>
-        
-        <!-- <div class="post-preview" id="blog_context" data-aos="fade-right">
-          	链接
-          <a href="/bluewhale/blogContent">
-            <h2 class="post-title">
-              Science has not yet mastered prophecy
-            </h2>
-            <h3 class="post-subtitle">
-              We predict too much for the next year and yet far too little for the next ten.
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            	链接
-            <a href="#">Start Bootstrap</a>
-            on August 24, 2019</p>
-        </div>
-        
-        <div class="post-preview" id="blog_context" data-aos="fade-left">
-          	链接
-          <a href="/bluewhale/blogContent">
-            	题目
-            <h2 class="post-title">
-              Failure is not an option
-            </h2>
-            	简介
-            <h3 class="post-subtitle">
-              Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-            </h3>
-          </a>
-          	作者
-          <p class="post-meta">Posted by
-            	链接
-            <a href="#">Start Bootstrap</a>
-            on July 8, 2019</p>
-        </div> -->
        
         <!-- Pager -->
         <div class="clearfix">

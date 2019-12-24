@@ -4,12 +4,14 @@ import java.util.List;
 
 import com.bluewhale.pojo.Article;
 import com.bluewhale.pojo.PageData;
-import com.bluewhale.pojo.QueryVo;
 
 public interface ArticleDao {
 	
+	// 获取访问量最多的五个
+	public List<Article> getFifthArticle(PageData pd);
+	
 	// 获取文章总数
-	public Integer getArticleTotal();
+	public Integer getArticleTotal(PageData pd);
 	
 	// 添加文章
 	public void addArticle(Article article);
@@ -21,7 +23,7 @@ public interface ArticleDao {
 	public void deleteArticleById(Integer id);
 	
 	// 获取文章列表
-	public List<Article> getArticle(QueryVo<Article> queryVo);
+	public List<Article> getArticle(PageData pd);
 	
 	// 获取文章点赞数
 	public Integer getZanCount(Integer id);
@@ -34,4 +36,19 @@ public interface ArticleDao {
 	
 	// 添加点赞
 	public void addDianZan(PageData pd);
+
+	// 判断文章是否已收藏
+	public PageData isCollect(PageData pd);
+	
+	// 删除收藏
+	public void deleteCollect(PageData pd);
+		
+	// 添加收藏
+	public void addCollect(PageData pd);
+
+	// 获取该用户收藏文章数
+	public Integer getCollectCount(int userid);
+
+	// 获取用户收藏文章列表
+	public List<Article> getCollectArticle(PageData pd);
 }

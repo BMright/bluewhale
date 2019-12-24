@@ -77,7 +77,6 @@ header.masthead .site-heading{
 	margin-top: -60px;
 }
 .overlay {
-
     position: absolute;
     top: 0;
     left: 0;
@@ -110,3 +109,36 @@ header.masthead .site-heading{
 	color:white;
 	border:none;
  }
+ #down_menu a:hover{
+	 background: #1296DB;
+	 color: white;
+ }
+.mx-auto1{
+	 margin-left: 10px !important;
+	 margin-right: 10px !important;
+	 }
+.topages{
+	margin-top: 20px;
+}
+.sure_btn{
+	padding: 5px 10px;
+	border-radius: 6px;
+	background: #1296DB;
+	border-color: #1296DB;
+}
+.pages{
+	padding: 0px 0px 0px 5px;
+}
+#each_note{
+	margin-top: 20px;
+}
+.note_head{
+	background: white;
+	color: black;
+}
+.note_body{
+	margin-bottom: 15px;
+}
+.up_lists{
+	margin-top: 20px;
+}

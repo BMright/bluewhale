@@ -6,6 +6,8 @@ public class User {
 	private String	username;
 	private String	password;
 	private String  email;
+	private String	sex;
+	private String  selfintroduce;
 	private Integer root;
 	
 	public Integer getId() {
@@ -32,6 +34,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getSelfintroduce() {
+		return selfintroduce;
+	}
+	public void setSelfintroduce(String selfintroduce) {
+		this.selfintroduce = selfintroduce;
+	}
 	public Integer getRoot() {
 		return root;
 	}
@@ -40,7 +54,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", root="
-				+ root + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", sex="
+				+ sex + ", selfintroduce=" + selfintroduce + ", root=" + root + "]";
 	}
 }

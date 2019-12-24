@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bluewhale.pojo.User;
+
 public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -18,15 +20,16 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		
 		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
 		String isLogin = (String) session.getAttribute("loginStatus");
 		String path = request.getRequestURI();
 		System.out.println("path:" + path);
 		if (path.equals("/bluewhale/toLogin") || path.equals("/bluewhale/getIsLogin") || path.contains(".")) {
 			chain.doFilter(req, res);
 		}
-		else if (isLogin == "true") {
+		else if (isLogin == "true" && user != null) {
 			chain.doFilter(req, res);
-		}
+		} 
 		else {
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request,response);
 		}
